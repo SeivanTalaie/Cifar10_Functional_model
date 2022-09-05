@@ -63,3 +63,19 @@ pd.DataFrame(history.history).plot()
 # %% Confusion_matrix :
 y_pred=model.predict(x_test)
 sns.heatmap(confusion_matrix(np.argmax(y_pred,axis=1), np.argmax(y_test , axis=1)), cmap="Blues" , fmt="d" , annot=True)
+
+# %% Examine the predictions :
+R = 5
+C = 5
+labels = ['Airplane', 'Automobile', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
+Y_true = np.argmax(y_test, axis=1)
+Y_pred_classes = np.argmax(y_pred, axis=1) 
+fig, axes = plt.subplots(R, C, figsize=(12,12))
+axes = axes.ravel()
+
+for i in np.arange(0, R*C):
+    axes[i].imshow(x_test[i])
+    axes[i].set_title("True: %s \nPredict: %s" % (labels[Y_true[i]], labels[Y_pred_classes[i]]))
+    axes[i].axis('off')
+    plt.subplots_adjust(wspace=1.5)
+plt.show()
