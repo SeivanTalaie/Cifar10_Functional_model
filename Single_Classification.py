@@ -21,3 +21,6 @@ num_classes=10
 x_train=x_train.astype("float32") / 255.0
 x_test=x_test.astype("float32") / 255.0
 
+#%% One-hot-encoding : 
+y_train = to_categorical(y_train , num_classes=num_classes)
+y_test = to_categorical(y_test , num_classes=num_classes)
