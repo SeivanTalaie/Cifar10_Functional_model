@@ -12,3 +12,7 @@ from keras.layers import RandomFlip , RandomContrast , RandomZoom ,RandomRotatio
 from keras.datasets import cifar10 
 from sklearn.metrics import confusion_matrix 
 import pandas as pd
+
+# %% Load the data :
+(x_train , y_train) , (x_test , y_test) = cifar10.load_data()
+num_classes=10
