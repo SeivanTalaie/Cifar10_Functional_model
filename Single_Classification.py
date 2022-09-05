@@ -45,3 +45,7 @@ x=BatchNormalization()(x)
 x= Flatten()(x)
 x= Dense(32 , activation="relu")(x)
 output = Dense(10 , activation="softmax")(x)
+
+model=Model(inputs = input , outputs = output) 
+model.summary() 
+plot_model(model , "fcn_cifar10.png" , show_shapes=True)
