@@ -59,3 +59,7 @@ history=model.fit(x_train, y_train, batch_size=128,
 # %% Results :
 import pandas as pd 
 pd.DataFrame(history.history).plot()
+
+# %% Confusion_matrix :
+y_pred=model.predict(x_test)
+sns.heatmap(confusion_matrix(np.argmax(y_pred,axis=1), np.argmax(y_test , axis=1)), cmap="Blues" , fmt="d" , annot=True)
