@@ -49,3 +49,9 @@ output = Dense(10 , activation="softmax")(x)
 model=Model(inputs = input , outputs = output) 
 model.summary() 
 plot_model(model , "fcn_cifar10.png" , show_shapes=True)
+
+# %% Compile and fit the model :
+plot_loss = llp.PlotLossesKeras()
+model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
+history=model.fit(x_train, y_train, batch_size=128,
+ epochs=15, validation_data=(x_test,y_test), callbacks=[plot_loss])
